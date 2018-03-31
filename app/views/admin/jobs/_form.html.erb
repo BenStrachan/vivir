@@ -1,0 +1,18 @@
+<%= simple_form_for([:admin, @job]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :client %>
+    <%= f.association :job_type %>
+    <%= f.input :status, collection: ['Treated', 'Out of facility', 'Hospitalised', 'Refused when offered treatment', 'Sick', 'Facility in outbreak', 'Allied health professional sick'] %>
+    <%= f.input :visit_number %>
+    <%= f.input :weekly_visit_total %>
+    <%= f.association :user %>
+    <%= f.input :completed_date %>
+    <%= f.input :notes, :as => :text, :input_html => {:rows => 5} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

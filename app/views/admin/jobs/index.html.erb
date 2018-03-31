@@ -1,0 +1,51 @@
+<div class="box">
+  <div class="box-header">
+  <h3 class="box-title">Jobs</h3>
+    <div class="box-tools">
+      <ul class="pull-right">
+        <a href="<%= new_admin_job_path %>" class="btn btn-block btn-default btn-sm">New job</a>
+      </ul>
+    </div>
+  </div>
+  <div class="box-body">
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Room</th>
+      <th>Location</th>
+      <th>Job type</th>
+      <th>Details</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.client %></td>
+        <td><%= job.client&.room %></td>
+        <td><%= job.client&.location %></td>
+        <td><%= job.job_type %></td>
+        <td><%= job.visit_number %> / <%= job.weekly_visit_total %></td>
+        <td><%= job.status %></td>
+        <td><%= link_to 'Show', admin_job_path(job) %></td>
+        <td><%= link_to 'Edit', edit_admin_job_path(job) %></td>
+        <td><%= link_to 'Delete', admin_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div class="box-footer">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= page_entries_info @jobs %>
+    </div>
+    <div class="col-sm-6">
+      <%= paginate @jobs %>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  job_type: one
+  status: MyString
+  visit_number: 1
+  weekly_visit_total: 1
+  user: one
+  completed_date: 2018-03-31
+  notes: MyString
+  business: one
+
+two:
+  client: two
+  job_type: two
+  status: MyString
+  visit_number: 1
+  weekly_visit_total: 1
+  user: two
+  completed_date: 2018-03-31
+  notes: MyString
+  business: two

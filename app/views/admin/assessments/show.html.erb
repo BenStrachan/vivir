@@ -1,0 +1,47 @@
+<section class="content">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Assessment</h3>
+    </div>
+    <div class="box-body">
+
+      <p>
+        <strong>Client:</strong>
+        <%= @assessment.client %>
+      </p>
+
+      <p>
+        <strong>User:</strong>
+        <%= @assessment.user %>
+      </p>
+
+      <p>
+        <strong>Assessment type:</strong>
+        <%= @assessment.assessment_type %>
+      </p>
+
+      <p>
+        <strong>Assessment completed:</strong>
+        <%= @assessment.assessment_completed %>
+      </p>
+
+      <p>
+        <strong>Assessment expired:</strong>
+        <%= @assessment.assessment_expired %>
+      </p>
+
+      <p>
+        <strong>Status:</strong>
+        <%= @assessment.status %>
+      </p>
+
+      <p>
+        <strong>Notes:</strong>
+        <%= @assessment.notes %>
+      </p>
+
+      <%= link_to 'Edit', edit_admin_assessment_path(@assessment) %> |
+      <%= link_to 'Back', admin_assessments_path %>
+    </div>
+  </div>
+</section>

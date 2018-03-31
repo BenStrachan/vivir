@@ -1,0 +1,57 @@
+<section class="content">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Customers</h3>
+    </div>
+    <div class="box-body">
+
+      <p>
+        <strong>First name:</strong>
+        <%= @client.first_name %>
+      </p>
+
+      <p>
+        <strong>Last name:</strong>
+        <%= @client.last_name %>
+      </p>
+
+      <p>
+        <strong>Date of birth:</strong>
+        <%= @client.date_of_birth %>
+      </p>
+
+      <p>
+        <strong>Location:</strong>
+        <%= @client.location %>
+      </p>
+
+      <p>
+        <strong>Room:</strong>
+        <%= @client.room %>
+      </p>
+
+      <p>
+        <strong>Job type:</strong>
+        <%= @client.job_type %>
+      </p>
+
+      <p>
+        <strong>Job notes:</strong>
+        <%= @client.job_notes %>
+      </p>
+
+      <p>
+        <strong>Notes:</strong>
+        <%= @client.notes %>
+      </p>
+
+      <p>
+        <strong>Business:</strong>
+        <%= @client.business %>
+      </p>
+
+      <%= link_to 'Edit', edit_admin_client_path(@client) %> |
+      <%= link_to 'Back', admin_clients_path %>
+    </div>
+  </div>
+</section>
