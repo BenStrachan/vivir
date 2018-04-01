@@ -11,6 +11,9 @@
     </div>
   <hr>
     <ul class="sidebar-menu" data-widget="tree">
+
+      <% if current_user.admin? %>
+
       <li>
         <a href="<%= admin_dashboards_path %>">
           <i class="fa fa-laptop"></i> <span> Dashboard</span>
@@ -32,10 +35,43 @@
         </a>
       </li>
       <li>
+        <a href="<%= admin_reports_path %>">
+          <i class="fa fa-circle"></i> <span> Reports</span>
+        </a>
+      </li>
+      <li>
         <a href="<%= admin_settings_path %>">
           <i class="fa fa-cog"></i> <span> Settings</span>
         </a>
       </li>
+
+      <% else %>
+
+      <li>
+        <a href="<%= app_dashboards_path %>">
+          <i class="fa fa-laptop"></i> <span> Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= app_clients_path %>">
+          <i class="fa fa-user"></i> <span> Clients</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= app_jobs_path %>">
+          <i class="fa fa-file"></i> <span> Jobs</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= app_assessments_path %>">
+          <i class="fa fa-folder"></i> <span> Assessments</span>
+        </a>
+      </li>
+
+      <% end %>
+
+
+
     </ul>
   </section>
 </aside>

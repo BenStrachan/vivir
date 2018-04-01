@@ -24,8 +24,9 @@ validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 before_validation :set_role
 belongs_to :business, optional: true
-has_many :jobs 
+has_many :jobs
 has_many :assessments
+has_and_belongs_to_many :locations, optional: true
 
 def full_name
   [first_name, last_name].join(" ")

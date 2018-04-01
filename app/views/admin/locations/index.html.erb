@@ -21,7 +21,7 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= location.customer %></td>
+        <td><%= location.customer&.business_name %></td>
         <td><%= location.name %></td>
         <td><%= location.phone %></td>
         <td><%= link_to 'Show', admin_location_path(location) %></td>

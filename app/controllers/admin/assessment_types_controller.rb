@@ -6,7 +6,7 @@ module Admin
     # GET /assessment_types
     # GET /assessment_types.json
     def index
-      @assessment_types = current_business.assessment_types.order(created_at: :desc).page(params[:page])
+      @assessment_types = current_business.assessment_types.order(name: :asc).page(params[:page])
     end
 
     # GET /assessment_types/1

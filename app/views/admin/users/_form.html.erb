@@ -4,6 +4,7 @@
   <%= f.input :last_name, required: true %>
   <%= f.input :email, required: true, autofocus: true %>
   <%= f.input :role, required: true, collection: User::ROLES %>
+  <%= f.association :locations, required: true, multiple: true, input_html: { class: 'select2' } %>
   <% if @user.new_record? %>
   <%= f.input :password, required: true %>
   <%= f.input :password_confirmation, required: true %>

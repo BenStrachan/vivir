@@ -1,4 +1,4 @@
-module Admin
+module App
   class JobsController < BaseController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 

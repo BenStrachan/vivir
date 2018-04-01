@@ -6,7 +6,7 @@ module Admin
     # GET /job_types
     # GET /job_types.json
     def index
-      @job_types = current_business.job_types.order(created_at: :desc).page(params[:page])
+      @job_types = current_business.job_types.order(name: :asc).page(params[:page])
     end
 
     # GET /job_types/1

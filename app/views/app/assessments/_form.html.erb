@@ -1,0 +1,17 @@
+<%= simple_form_for([:admin, @assessment]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :client %>
+    <%= f.association :user %>
+    <%= f.association :assessment_type %>
+    <%= f.input :assessment_completed %>
+    <%= f.input :assessment_expired %>
+    <%= f.input :status, collection: ['Current', 'Expired'] %>
+    <%= f.input :notes, :as => :text, :input_html => {:rows => 5} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
