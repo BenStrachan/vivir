@@ -5,19 +5,26 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Location</label>
-            <%= f.select :location_id_eq, 
+            <%= f.select :location_id_eq,
               options_for_select(current_user.locations.pluck(:name, :id), @search.location_id_eq), {include_blank: 'All'} , class: 'form-control' %>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
+            <label>Client</label>
+            <%= f.select :client_id_eq,
+              options_for_select(Client.pluck(:first_name, :id), @search.client_id_eq), {include_blank: 'All'} , class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
             <label>Management</label>
-            <%= f.select :job_type_id_eq, 
+            <%= f.select :job_type_id_eq,
               options_for_select(JobType.pluck(:name, :id), @search.job_type_id_eq), {include_blank: 'All'} , class: 'form-control' %>
           </div>
         </div>
         <div class="col-md-12">
-          <button class="btn btn-success">
+          <button class="btn btn-default">
             Search
           </button>
         </div>
