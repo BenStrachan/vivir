@@ -18,13 +18,15 @@
 
 class Job < ApplicationRecord
   STATUS = [
+    'Pending',
     'Treated',
     'Out of facility',
     'Hospitalised',
     'Refused when offered treatment',
     'Sick',
     'Facility in outbreak',
-    'Allied health professional sick'
+    'Allied health professional sick',
+    'Not completed'
   ]
 
   belongs_to :client

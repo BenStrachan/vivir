@@ -12,14 +12,14 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Client</label>
-          <%= f.select :client_id_eq, 
+          <%= f.select :client_id_eq,
             options_for_select(client_options_for_app, @search.client_id_cont), {include_blank: 'All'} , class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Assessment type</label>
-          <%= f.select :assessment_type_id_eq, 
+          <%= f.select :assessment_type_id_eq,
             options_for_select(current_business.assessment_types.pluck(:name, :id), @search.assessment_type_id_cont), {include_blank: 'All'} , class: 'form-control' %>
 
         </div>
@@ -70,7 +70,7 @@
     <% @assessments.each do |assessment| %>
       <tr>
         <td><%= assessment.client&.room %></td>
-        <td><%= assessment.client&.location&.name %></td>
+        <td><%= assessment.client&.location&.customer&.business_name %> | <%= assessment.client&.location&.name %></td>
         <td><%= assessment.client&.full_name %></td>
         <td><%= assessment.assessment_type&.name %></td>
         <td><%= assessment.assessment_expired %></td>
