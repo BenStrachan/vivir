@@ -1,6 +1,9 @@
 module App
   class ClientsController < BaseController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action only: [:index] do
+    load_ransack_params('app_clients')
+  end
 
   # GET /clients
   # GET /clients.json

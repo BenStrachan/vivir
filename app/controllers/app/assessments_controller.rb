@@ -1,6 +1,9 @@
 module App
   class AssessmentsController < BaseController
   before_action :set_assessment, only: [:show, :edit, :update, :destroy]
+  before_action only: [:index] do
+    load_ransack_params('app_assessments')
+  end
 
   # GET /assessments
   # GET /assessments.json

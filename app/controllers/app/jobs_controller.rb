@@ -1,6 +1,9 @@
 module App
   class JobsController < BaseController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action only: [:index] do
+    load_ransack_params('app_jobs')
+  end
 
   # GET /jobs
   # GET /jobs.json

@@ -16,11 +16,18 @@
         <span class="icon-bar"></span>
       </a>
 
+      <a href="/" class="logo-mobile">VIVIR</a>
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span><img class="user-image" src="<%= current_user.avatar %>" alt=""> <%= current_user.first_name %> <%= current_user.last_name %></span>
+              <span>
+                <img class="user-image" src="<%= current_user.avatar %>" alt="">
+                <span class="name">
+                  <%= current_user.first_name %> <%= current_user.last_name %>
+                </span>
+              </span>
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">

@@ -12,6 +12,31 @@
   }
 }
 
+.main-header {
+  .logo-mobile {
+    display: none;
+  }
+  @media screen and (max-width: 767px){
+    >.logo {
+      display: none;
+    }
+    .logo-mobile {
+      display: inline-block;
+      color: #FFF;
+      font-size: 24px;
+      padding: 8px 10px;
+      flex: 1 1 auto;
+      text-align: center;
+    }
+    .user-menu .name {
+      display: none;
+    }
+    .navbar {
+      display: flex;
+    }
+  }
+}
+
 .select2-container {
   width: 100%;
   max-width: 100%;
