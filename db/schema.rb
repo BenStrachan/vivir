@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331121309) do
+ActiveRecord::Schema.define(version: 20180401031920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 20180331121309) do
     t.bigint "business_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.index ["assessment_type_id"], name: "index_assessments_on_assessment_type_id"
     t.index ["business_id"], name: "index_assessments_on_business_id"
     t.index ["client_id"], name: "index_assessments_on_client_id"

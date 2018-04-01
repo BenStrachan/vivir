@@ -35,6 +35,12 @@
         <%= @assessment.status %>
       </p>
 
+      <% if @assessment.attachment.exists? %>
+        <a href="<%= @user_compliance_item.attachment %>" target="_blank">
+          Attachment
+        </a>
+      <% end %>
+
       <p>
         <strong>Notes:</strong>
         <%= @assessment.notes %>

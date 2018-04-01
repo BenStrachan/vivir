@@ -55,7 +55,7 @@ module App
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assessment_params
-      params.require(:assessment).permit(:client_id, :user_id, :assessment_type_id, :assessment_completed, :assessment_expired, :status, :notes, :business_id)
+      params.require(:assessment).permit(:client_id, :user_id, :assessment_type_id, :assessment_completed, :assessment_expired, :status, :notes, :business_id, :attachment)
     end
   end
 end

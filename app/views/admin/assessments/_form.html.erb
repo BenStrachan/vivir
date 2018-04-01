@@ -8,6 +8,7 @@
     <%= f.input :assessment_completed %>
     <%= f.input :assessment_expired %>
     <%= f.input :status, collection: ['Current', 'Expired'] %>
+    <%= f.input :attachment %>
     <%= f.input :notes, :as => :text, :input_html => {:rows => 5} %>
   </div>
 
