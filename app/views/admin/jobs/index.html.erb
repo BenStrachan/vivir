@@ -1,92 +1,52 @@
-<!-- SELECT2 EXAMPLE -->
 <div class="box box-default">
   <div class="box-body">
+    <%= search_form_for [:admin, @search] do |f| %>
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
           <label>Location</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.select :client_location_id_eq,
+            options_for_select(current_business.locations.pluck(:name, :id), @search.client_location_id_cont), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Client</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.select :client_id_eq, 
+            options_for_select(current_business.clients.pluck(:full_name, :id), @search.client_id_cont), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label>Job type</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <label>Assessment type</label>
+          <%= f.select :job_type_id_eq, 
+            options_for_select(current_business.assessment_types.pluck(:name, :id), @search.job_type_id_eq), {include_blank: 'All'}, class: 'form-control' %>
+
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Status</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.select :status_eq, options_for_select(Job::STATUS, @search.status_eq), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Completed start</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.search_field :completed_date_gteq, value: @search.completed_date_gteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Completed end</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.search_field :completed_date_lteq, value: @search.completed_date_lteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
+      <div class="col-md-12">
+        <button class="btn btn-default">Search</button>
+      </div>
     </div>
+    <% end %>
   </div>
 </div>
 

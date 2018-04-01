@@ -5,52 +5,39 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Location</label>
-          <%= f.select :client_location_id_cont,
-            options_for_select(current_user.locations.pluck(:name, :id), @search.client_location_id_cont), {} , class: 'form-control' %>
+          <%= f.select :client_location_id_eq,
+            options_for_select(current_user.locations.pluck(:name, :id), @search.client_location_id_cont), {include_blank: 'All'} , class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Client</label>
-          <%= f.select :client_id_cont, 
-            options_for_select(Client.pluck(:first_name, :id), @search.client_id_cont), {} , class: 'form-control' %>
+          <%= f.select :client_id_eq, 
+            options_for_select(client_options_for_app, @search.client_id_cont), {include_blank: 'All'} , class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Assessment type</label>
-          <%= f.select :assessment_type_id_cont, 
-            options_for_select(AssessmentType.pluck(:name, :id), @search.assessment_type_id_cont), {} , class: 'form-control' %>
+          <%= f.select :assessment_type_id_eq, 
+            options_for_select(current_business.assessment_types.pluck(:name, :id), @search.assessment_type_id_cont), {include_blank: 'All'} , class: 'form-control' %>
 
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Expired start</label>
-          <select class="form-control">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.search_field :assessment_expired_gteq, value: @search.assessment_expired_gteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Expired end</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.search_field :assessment_expired_lteq, value: @search.assessment_expired_lteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-default">Search</button>
       </div>
     </div>
     <% end %>

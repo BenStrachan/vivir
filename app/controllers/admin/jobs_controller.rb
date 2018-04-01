@@ -5,7 +5,9 @@ module Admin
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = current_business.jobs.order(created_at: :desc).page(params[:page])
+    @search = current_business.jobs.ransack(params[:q])
+
+    @jobs = @search.result.order(created_at: :desc).page(params[:page])
   end
 
   # GET /jobs/1

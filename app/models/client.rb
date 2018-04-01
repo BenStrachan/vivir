@@ -14,6 +14,7 @@
 #  business_id   :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  full_name     :string
 #
 
 class Client < ApplicationRecord
@@ -23,8 +24,12 @@ class Client < ApplicationRecord
   has_many :jobs
   has_many :assessments
 
-  def full_name
-    [first_name, last_name].join(" ")
+  after_validation :set_full_name
+
+  private
+  def set_full_name
+    if first_name_changed? || last_name_changed?
+      self.full_name = [first_name, last_name].join(' ')
+    end
   end
-  
 end

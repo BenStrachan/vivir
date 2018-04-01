@@ -5,9 +5,10 @@ module App
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = current_business.jobs.joins(:client)
-                            .where(clients: {location_id: current_user.locations.pluck(:id)})
-                            .order(created_at: :desc).page(params[:page])
+    @search = current_business.jobs.joins(:client)
+                              .where(clients: {location_id: current_user.locations.pluck(:id)})
+                              .ransack(params[:q])
+    @jobs = @search.result.order(created_at: :desc).page(params[:page])
   end
 
   # GET /jobs/1
