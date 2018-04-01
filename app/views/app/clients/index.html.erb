@@ -1,50 +1,28 @@
-<!-- SELECT2 EXAMPLE -->
 <div class="box box-default">
   <div class="box-body">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Location</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+    <%= search_form_for [:app, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Location</label>
+            <%= f.select :location_id_eq, 
+              options_for_select(current_user.locations.pluck(:name, :id), @search.location_id_eq), {include_blank: 'All'} , class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Management</label>
+            <%= f.select :job_type_id_eq, 
+              options_for_select(JobType.pluck(:name, :id), @search.job_type_id_eq), {include_blank: 'All'} , class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-success">
+            Search
+          </button>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Client</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Management</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 

@@ -3,4 +3,5 @@
 //= require bootstrap.min
 //= require select2
 //= require adminlte.min
+//= require bootstrap-material-datetimepicker
 //= require admin/main
