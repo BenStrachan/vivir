@@ -53,7 +53,7 @@
   <h3 class="box-title">Clients</h3>
     <div class="box-tools">
       <ul class="pull-right">
-        <a href="<%= new_admin_client_path %>" class="btn btn-block btn-default btn-sm">New client</a>
+        <a href="<%= new_app_client_path %>" class="btn btn-block btn-default btn-sm">New client</a>
       </ul>
     </div>
   </div>
@@ -78,9 +78,9 @@
         <td><%= client.first_name %></td>
         <td><%= client.last_name %></td>
         <td><%= client.job_type&.name %></td>
-        <td><%= link_to 'Show', admin_client_path(client) %></td>
-        <td><%= link_to 'Edit', edit_admin_client_path(client) %></td>
-        <td><%= link_to 'Delete', admin_client_path(client), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', app_client_path(client) %></td>
+        <td><%= link_to 'Edit', edit_app_client_path(client) %></td>
+        <td><%= link_to 'Delete', app_client_path(client), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
   </tbody>
