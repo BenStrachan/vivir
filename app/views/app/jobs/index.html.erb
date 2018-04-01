@@ -1,4 +1,3 @@
-<!-- SELECT2 EXAMPLE -->
 <div class="box box-default">
   <div class="box-body">
     <div class="row">
@@ -95,7 +94,7 @@
   <h3 class="box-title">Jobs</h3>
     <div class="box-tools">
       <ul class="pull-right">
-        <a href="<%= new_admin_job_path %>" class="btn btn-block btn-default btn-sm">New job</a>
+        <a href="<%= new_app_job_path %>" class="btn btn-block btn-default btn-sm">New job</a>
       </ul>
     </div>
   </div>
@@ -124,10 +123,10 @@
         <td><%= job.client&.job_notes %></td>
         <td><%= job.job_type&.name %></td>
         <td><%= job.status %></td>
-        <td><%= link_to 'Completed', edit_admin_job_path(job) %></td>
-        <td><%= link_to 'Show', admin_job_path(job) %></td>
-        <td><%= link_to 'Edit', edit_admin_job_path(job) %></td>
-        <td><%= link_to 'Delete', admin_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Completed', edit_app_job_path(job) %></td>
+        <td><%= link_to 'Show', app_job_path(job) %></td>
+        <td><%= link_to 'Edit', edit_app_job_path(job) %></td>
+        <td><%= link_to 'Delete', app_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
   </tbody>

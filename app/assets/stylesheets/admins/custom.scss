@@ -12,6 +12,14 @@
   }
 }
 
+.select2-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  color: #555;
+}
 .avatar-med {
   width: 32px;
   height: 32px;

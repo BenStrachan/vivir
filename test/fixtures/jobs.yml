@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: jobs
+#
+#  id                 :integer          not null, primary key
+#  client_id          :integer
+#  job_type_id        :integer
+#  status             :string
+#  visit_number       :integer
+#  weekly_visit_total :integer
+#  user_id            :integer
+#  completed_date     :date
+#  notes              :string
+#  business_id        :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

@@ -32,6 +32,7 @@ gem 'aws-sdk', '~> 2.3'
 gem 'simple-form-datepicker'
 gem 'ransack'
 gem 'country_select'
+gem 'select2-rails'
 
 
 group :development, :test do

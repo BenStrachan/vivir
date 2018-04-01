@@ -5,7 +5,11 @@ module App
   # GET /assessments
   # GET /assessments.json
   def index
-    @assessments = current_business.assessments.order(created_at: :desc).page(params[:page])
+    @search = current_business.assessments.joins(:client)
+                              .where(clients: {location_id: current_user.locations.pluck(:id)})
+                              .ransack(params[:q])
+
+    @assessments = @search.result.order(created_at: :desc).page(params[:page])
   end
 
   # GET /assessments/1
