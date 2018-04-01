@@ -7,17 +7,17 @@
 
       <p>
         <strong>Client:</strong>
-        <%= @assessment.client %>
+        <%= @assessment.client&.full_name %>
       </p>
 
       <p>
         <strong>User:</strong>
-        <%= @assessment.user %>
+        <%= @assessment.user&.full_name %>
       </p>
 
       <p>
         <strong>Assessment type:</strong>
-        <%= @assessment.assessment_type %>
+        <%= @assessment.assessment_type&.name %>
       </p>
 
       <p>
