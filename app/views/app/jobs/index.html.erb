@@ -123,7 +123,11 @@
         <td><%= job.client&.job_notes %></td>
         <td><%= job.job_type&.name %></td>
         <td><%= job.status %></td>
-        <td><%= link_to 'Completed', edit_app_job_path(job) %></td>
+        <td>
+          <a href="<%= edit_app_job_path(job) %>" data-method="GET" data-remote="true">
+            Completed
+          </a>
+        </td>
         <td><%= link_to 'Show', app_job_path(job) %></td>
         <td><%= link_to 'Edit', edit_app_job_path(job) %></td>
         <td><%= link_to 'Delete', app_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>

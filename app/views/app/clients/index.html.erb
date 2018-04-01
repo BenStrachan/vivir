@@ -12,8 +12,8 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Client</label>
-            <%= f.select :client_id_eq,
-              options_for_select(Client.pluck(:first_name, :id), @search.client_id_eq), {include_blank: 'All'} , class: 'form-control' %>
+            <%= f.select :id_eq,
+              options_for_select(Client.pluck(:first_name, :id), @search.id_eq), {include_blank: 'All'} , class: 'form-control' %>
           </div>
         </div>
         <div class="col-md-4">

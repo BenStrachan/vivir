@@ -20,6 +20,10 @@ module Admin
 
   # GET /jobs/1/edit
   def edit
+    respond_to do |f|
+      f.html
+      f.js
+    end
   end
 
   def create

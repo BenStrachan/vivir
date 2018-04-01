@@ -1,0 +1,9 @@
+$('#modal-completed-job').remove();
+$('body').append('<%= j render('modal') %>');
+$('#modal-completed-job').modal('show');
+
+$('#modal-completed-job .datepicker').bootstrapMaterialDatePicker({
+  format: 'MMMM DD YYYY',
+  weekStart : 0,
+  time: false
+});

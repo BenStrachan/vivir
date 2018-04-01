@@ -22,12 +22,16 @@ module App
 
   # GET /jobs/1/edit
   def edit
+    respond_to do |f|
+      f.html
+      f.js  
+    end
   end
 
   def create
     @job = current_business.jobs.new(job_params)
     if @job.save
-      redirect_to admin_jobs_path, notice: "Job has beed created successfully"
+      redirect_to app_jobs_path, notice: "Job has beed created successfully"
     else
       render :new
     end
@@ -38,12 +42,12 @@ module App
 
   def destroy
     @job.delete
-    redirect_to admin_jobs_path, notice: "Job has beed deleted successfully"
+    redirect_to app_jobs_path, notice: "Job has beed deleted successfully"
   end
 
   def update
     if @job.update job_params
-      redirect_to admin_jobs_path, notice: "Job has beed updated successfully"
+      redirect_to app_jobs_path, notice: "Job has beed updated successfully"
     else
       render :edit
     end
