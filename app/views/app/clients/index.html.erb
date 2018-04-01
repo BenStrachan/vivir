@@ -1,50 +1,28 @@
-<!-- SELECT2 EXAMPLE -->
 <div class="box box-default">
   <div class="box-body">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Location</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+    <%= search_form_for [:app, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Location</label>
+            <%= f.select :location_id_eq, 
+              options_for_select(current_user.locations.pluck(:name, :id), @search.location_id_eq), {include_blank: 'All'} , class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Management</label>
+            <%= f.select :job_type_id_eq, 
+              options_for_select(JobType.pluck(:name, :id), @search.job_type_id_eq), {include_blank: 'All'} , class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-success">
+            Search
+          </button>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Client</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>Management</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
@@ -53,7 +31,7 @@
   <h3 class="box-title">Clients</h3>
     <div class="box-tools">
       <ul class="pull-right">
-        <a href="<%= new_admin_client_path %>" class="btn btn-block btn-default btn-sm">New client</a>
+        <a href="<%= new_app_client_path %>" class="btn btn-block btn-default btn-sm">New client</a>
       </ul>
     </div>
   </div>
@@ -78,9 +56,9 @@
         <td><%= client.first_name %></td>
         <td><%= client.last_name %></td>
         <td><%= client.job_type&.name %></td>
-        <td><%= link_to 'Show', admin_client_path(client) %></td>
-        <td><%= link_to 'Edit', edit_admin_client_path(client) %></td>
-        <td><%= link_to 'Delete', admin_client_path(client), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', app_client_path(client) %></td>
+        <td><%= link_to 'Edit', edit_app_client_path(client) %></td>
+        <td><%= link_to 'Delete', app_client_path(client), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
   </tbody>

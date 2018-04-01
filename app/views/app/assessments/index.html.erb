@@ -12,41 +12,22 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Client</label>
-          <%= f.select :client_location_id_cont, options_for_select(current_user.locations.pluck(:name, :id)), {} , class: 'form-control' %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label>User</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.select :client_id_cont, 
+            options_for_select(Client.pluck(:first_name, :id), @search.client_id_cont), {} , class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Assessment type</label>
-          <select class="form-control select2" style="width: 100%;">
-            <option selected="selected">Alabama</option>
-            <option>Alaska</option>
-            <option>California</option>
-            <option>Delaware</option>
-            <option>Tennessee</option>
-            <option>Texas</option>
-            <option>Washington</option>
-          </select>
+          <%= f.select :assessment_type_id_cont, 
+            options_for_select(AssessmentType.pluck(:name, :id), @search.assessment_type_id_cont), {} , class: 'form-control' %>
+
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Expired start</label>
-          <select class="form-control select2" style="width: 100%;">
+          <select class="form-control">
             <option selected="selected">Alabama</option>
             <option>Alaska</option>
             <option>California</option>
