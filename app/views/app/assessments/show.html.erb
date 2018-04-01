@@ -36,7 +36,7 @@
       </p>
 
       <% if @assessment.attachment.exists? %>
-        <a href="<%= @user_compliance_item.attachment %>" target="_blank">
+        <a href="<%= @assessment.attachment %>" target="_blank">
           Attachment
         </a>
       <% end %>
@@ -46,8 +46,8 @@
         <%= @assessment.notes %>
       </p>
 
-      <%= link_to 'Edit', edit_admin_assessment_path(@assessment) %> |
-      <%= link_to 'Back', admin_assessments_path %>
+      <%= link_to 'Edit', edit_app_assessment_path(@assessment) %> |
+      <%= link_to 'Back', app_assessments_path %>
     </div>
   </div>
 </section>

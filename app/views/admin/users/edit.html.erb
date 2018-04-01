@@ -27,11 +27,9 @@
         <%= simple_form_for [:admin, @user] do |f| %>
           <%= f.input :password, required: true %>
           <%= f.input :password_confirmation, required: true %>
-          <%= f.button :submit, class: "btn btn btn-success", value: "Change password" %>
+          <%= f.button :submit, class: "btn btn btn-default", value: "Change password" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-

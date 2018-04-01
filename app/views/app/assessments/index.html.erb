@@ -5,7 +5,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Location</label>
-          <%= f.select :client_location_id_cont, 
+          <%= f.select :client_location_id_cont,
             options_for_select(current_user.locations.pluck(:name, :id), @search.client_location_id_cont), {} , class: 'form-control' %>
         </div>
       </div>
@@ -62,7 +62,7 @@
   <h3 class="box-title">Assessments</h3>
     <div class="box-tools">
       <ul class="pull-right">
-        <a href="<%= new_admin_assessment_path %>" class="btn btn-block btn-default btn-sm">New assessment</a>
+        <a href="<%= new_app_assessment_path %>" class="btn btn-block btn-default btn-sm">New assessment</a>
       </ul>
     </div>
   </div>
@@ -87,9 +87,9 @@
         <td><%= assessment.client&.full_name %></td>
         <td><%= assessment.assessment_type&.name %></td>
         <td><%= assessment.assessment_expired %></td>
-        <td><%= link_to 'Show', admin_assessment_path(assessment) %></td>
-        <td><%= link_to 'Edit', edit_admin_assessment_path(assessment) %></td>
-        <td><%= link_to 'Delete', admin_assessment_path(assessment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', app_assessment_path(assessment) %></td>
+        <td><%= link_to 'Edit', edit_app_assessment_path(assessment) %></td>
+        <td><%= link_to 'Delete', app_assessment_path(assessment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
   </tbody>
