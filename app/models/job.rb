@@ -14,6 +14,7 @@
 #  business_id        :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  completed_by_id    :integer
 #
 
 class Job < ApplicationRecord
@@ -33,5 +34,5 @@ class Job < ApplicationRecord
   belongs_to :job_type
   belongs_to :user, optional: true
   belongs_to :business
-  belongs_to :completed_by, class_name: User::name
+  belongs_to :completed_by, class_name: User::name, optional: true
 end

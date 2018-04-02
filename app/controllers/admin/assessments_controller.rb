@@ -8,9 +8,12 @@ module Admin
   # GET /assessments
   # GET /assessments.json
   def index
-    @search = current_business.assessments.search(params[:q])
+    @search = current_business.assessments.includes(:assessment_type).preload(client: :location)
+                              .joins(client: :location)
+                              .search(params[:q])
 
-    @assessments = @search.result.order(created_at: :desc).page(params[:page])
+    @assessments = @search.result.order("locations.name ASC, clients.room ASC")
+                                 .page(params[:page])
   end
 
   # GET /assessments/1
@@ -29,6 +32,8 @@ module Admin
 
   def create
     @assessment = current_business.assessments.new(assessment_params)
+    @assessment.created_by_id = current_user.id
+
     if @assessment.save
       redirect_to admin_assessments_path, notice: "Assessment has beed created successfully"
     else

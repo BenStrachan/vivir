@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     get 'setting' => 'dashboards#setting',  as: :settings
     resources :clients
     resources :assessments
-    resources :jobs
+    resources :jobs do
+      member do
+        post :allocated
+      end
+    end
     resources :users do
       collection do
         get :profile
@@ -41,7 +45,11 @@ Rails.application.routes.draw do
       end
     end
     resources :assessments
-    resources :jobs
+    resources :jobs do
+      member do
+        post :allocated
+      end
+    end
     resources :businesses, only: [:update] do
       collection do
         get :profile

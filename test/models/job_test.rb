@@ -14,6 +14,7 @@
 #  business_id        :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  completed_by_id    :integer
 #
 
 require 'test_helper'

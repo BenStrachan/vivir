@@ -8,11 +8,12 @@ module App
   # GET /assessments
   # GET /assessments.json
   def index
-    @search = current_business.assessments.joins(:client)
+    @search = current_business.assessments.includes(:assessment_type).preload(client: :location)
+                              .joins(client: :location)
                               .where(clients: {location_id: current_user.locations.pluck(:id)})
                               .ransack(params[:q])
 
-    @assessments = @search.result.order(created_at: :desc).page(params[:page])
+    @assessments = @search.result.order("locations.name ASC, clients.room ASC").page(params[:page])
   end
 
   # GET /assessments/1
@@ -31,6 +32,8 @@ module App
 
   def create
     @assessment = current_business.assessments.new(assessment_params)
+    @assessment.created_by_id = current_user.id
+
     if @assessment.save
       redirect_to admin_assessments_path, notice: "Assessment has beed created successfully"
     else

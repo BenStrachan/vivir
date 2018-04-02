@@ -36,6 +36,13 @@
           <%= f.search_field :assessment_expired_lteq, value: @search.assessment_expired_lteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Created by</label>
+          <%= f.select :created_by_id_eq,
+            options_for_select(user_options_for_app(current_business.users.order(:first_name)), @search.created_by_id_eq), {include_blank: 'All'} , class: 'form-control' %>
+        </div>
+      </div>
       <div class="col-md-12">
         <button class="btn btn-default">Search</button>
       </div>

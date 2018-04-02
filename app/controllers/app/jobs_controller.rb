@@ -1,6 +1,6 @@
 module App
   class JobsController < BaseController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :allocated]
   before_action only: [:index] do
     load_ransack_params('app_jobs')
   end
@@ -8,10 +8,13 @@ module App
   # GET /jobs
   # GET /jobs.json
   def index
-    @search = current_business.jobs.joins(:client)
-                              .where(clients: {location_id: current_user.locations.pluck(:id)})
+    @search = current_business.jobs.includes(:job_type, :user).preload(client: :location)
+                              .joins(client: :location)
+                              .where("locations.id IN (?)", current_user.locations.pluck(:id))
                               .ransack(params[:q])
-    @jobs = @search.result.order(created_at: :desc).page(params[:page])
+
+    @jobs = @search.result.order("locations.name ASC, jobs.visit_number ASC, clients.room ASC")
+                          .page(params[:page])
   end
 
   # GET /jobs/1
@@ -55,6 +58,12 @@ module App
     else
       render :edit
     end
+  end
+
+  def allocated
+    @job.update_attribute :user_id, current_user.id
+
+    redirect_to app_jobs_path
   end
 
   private

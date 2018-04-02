@@ -33,14 +33,15 @@
       <div class="col-md-2">
         <div class="form-group">
           <label>Allocated user</label>
-          <%= f.select :status_eq,
-          options_for_select(Job::STATUS, @search.status_eq), {include_blank: 'All'}, class: 'form-control' %>
+          <%= f.select :user_id_eq,
+            options_for_select(user_options_for_app(current_business.users.order(:first_name)), @search.user_id_eq), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label>Completed user</label>
-          <%= f.select :status_eq, options_for_select(Job::STATUS, @search.status_eq), {include_blank: 'All'}, class: 'form-control' %>
+          <%= f.select :completed_by_id_eq, 
+            options_for_select(user_options_for_app(current_business.users.order(:first_name)), @search.completed_by_id_eq), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-2">
@@ -100,12 +101,20 @@
             <td><%= job.client&.full_name %></td>
             <td><%= job.job_type&.name %></td>
             <td><%= job.status %></td>
-            <td><a href="#">Allocate to me</a></td>
+            <% unless job.user.present? %>
             <td>
-              <a href="<%= edit_admin_job_path(job) %>" data-method="GET" data-remote="true">
-                Completed
+              <a href="<%= allocated_admin_job_path(job) %>"data-method="POST">
+                Allocate to me
               </a>
             </td>
+            <% end %>
+            <% if job.completed_date.blank? && job.status.blank? %>
+              <td>
+                <a href="<%= edit_admin_job_path(job) %>" data-method="GET" data-remote="true">
+                  Complete
+                </a>
+              </td>
+            <% end %>
             <td><%= link_to 'Show', admin_job_path(job) %></td>
             <td><%= link_to 'Edit', edit_admin_job_path(job) %></td>
             <td><%= link_to 'Delete', admin_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,6 @@
 module Admin
   class JobsController < BaseController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :allocated]
   before_action only: [:index] do
     load_ransack_params('admin_jobs')
   end
@@ -8,9 +8,12 @@ module Admin
   # GET /jobs
   # GET /jobs.json
   def index
-    @search = current_business.jobs.ransack(params[:q])
+    @search = current_business.jobs.includes(:job_type, :user, client: :location)
+                              .joins(client: :location)
+                              .ransack(params[:q])
 
-    @jobs = @search.result.order(created_at: :desc).page(params[:page])
+    @jobs = @search.result.order("locations.name ASC, jobs.visit_number ASC, clients.room ASC")
+                          .page(params[:page])
   end
 
   # GET /jobs/1
@@ -56,6 +59,12 @@ module Admin
     end
   end
 
+  def allocated
+    @job.update_attribute :user_id, current_user.id
+
+    redirect_to admin_jobs_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
@@ -64,8 +73,7 @@ module Admin
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:job_id, :client_id, :job_type_id, :status, :visit_number, :weekly_visit_total, :user_id, :completed_date, :notes, :business_id,
-        :completed_by_id)
+      params.require(:job).permit(:job_id, :client_id, :job_type_id, :status, :visit_number, :weekly_visit_total, :user_id, :completed_date, :notes, :business_id,:completed_by_id)
     end
   end
 end
