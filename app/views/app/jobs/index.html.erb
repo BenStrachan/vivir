@@ -73,10 +73,9 @@
       <th>Room</th>
       <th>Location</th>
       <th>Client</th>
-      <th>Body area</th>
       <th>Job type</th>
       <th>Status</th>
-      <th colspan="4"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -87,9 +86,9 @@
         <td><%= job.client&.room %></td>
         <td><%= job.client&.location&.customer&.business_name %> | <%= job.client&.location&.name %></td>
         <td><%= job.client&.full_name %></td>
-        <td><%= job.client&.job_notes %></td>
         <td><%= job.job_type&.name %></td>
         <td><%= job.status %></td>
+        <td><a href="#">Allocate</a></td>
         <td>
           <a href="<%= edit_app_job_path(job) %>" data-method="GET" data-remote="true">
             Completed
