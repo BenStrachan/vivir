@@ -1,6 +1,6 @@
 module Admin
   class ClientsController < BaseController
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :destroy, :jobs, :assessments]
   before_action only: [:index] do
     load_ransack_params('admin_clients')
   end
@@ -16,6 +16,15 @@ module Admin
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @subsidebar = true
+  end
+
+  def jobs
+    @subsidebar = true
+  end
+
+  def assessments
+    @subsidebar = true
   end
 
   # GET /clients/new

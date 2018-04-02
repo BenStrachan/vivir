@@ -1,0 +1,46 @@
+<%= render 'sidebar' %>
+
+<div class="primary">
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Jobs</h3>
+    </div>
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Details</th>
+              <th>Room</th>
+              <th>Location</th>
+              <th>Job type</th>
+              <th>Status</th>
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @client.jobs.each do |job| %>
+              <tr>
+                <td><%= job.visit_number %> / <%= job.weekly_visit_total %></td>
+                <td><%= job.client&.room %></td>
+                <td><%= job.client&.location&.customer&.business_name %> | <%= job.client&.location&.name %></td>
+                <td><%= job.job_type&.name %></td>
+                <td><%= job.status %></td>
+                <td><a href="#">Allocate to me</a></td>
+                <td>
+                  <a href="<%= edit_admin_job_path(job) %>" data-method="GET" data-remote="true">
+                    Completed
+                  </a>
+                </td>
+                <td><%= link_to 'Show', admin_job_path(job) %></td>
+                <td><%= link_to 'Edit', edit_admin_job_path(job) %></td>
+                <td><%= link_to 'Delete', admin_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

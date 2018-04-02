@@ -1,0 +1,19 @@
+<div class="sub-sidebar">
+  <ul>
+    <li>
+      <a class="<%= params[:controller] == 'admin/clients' && params[:action] == 'show' ? 'active' : '' %>" 
+        href="<%= admin_client_path(@client) %>">Details
+      </a>
+    </li>
+    <li>
+      <a class="<%= params[:controller] == 'admin/clients' && params[:action] == 'jobs' ? 'active' : '' %>" 
+        href="<%= jobs_admin_client_path(@client) %>">Jobs
+      </a>
+    </li>
+    <li>
+      <a class="<%= params[:controller] == 'admin/clients' && params[:action] == 'assessments' ? 'active' : '' %>" 
+        href="<%= assessments_admin_client_path(@client) %>">Assessments
+      </a>
+    </li>
+  </ul>
+</div>

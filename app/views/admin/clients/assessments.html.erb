@@ -1,0 +1,38 @@
+<%= render 'sidebar' %>
+
+<div class="primary">
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Assessments</h3>
+    </div>
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Room</th>
+              <th>Location</th>
+              <th>Assessment type</th>
+              <th>Assessment expired</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @client.assessments.each do |assessment| %>
+              <tr>
+                <td><%= assessment.client&.room %></td>
+                <td><%= assessment.client&.location&.customer&.business_name %> | <%= assessment.client&.location&.name %></td>
+                <td><%= assessment.assessment_type&.name %></td>
+                <td><%= assessment.assessment_expired.try(:strftime, '%B %d %Y') %></td>
+                <td><%= link_to 'Show', admin_assessment_path(assessment) %></td>
+                <td><%= link_to 'Edit', edit_admin_assessment_path(assessment) %></td>
+                <td><%= link_to 'Delete', admin_assessment_path(assessment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

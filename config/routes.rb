@@ -34,7 +34,12 @@ Rails.application.routes.draw do
     resources :locations
     resources :assessment_types
     resources :job_types
-    resources :clients
+    resources :clients do
+      member do
+        get :jobs
+        get :assessments
+      end
+    end
     resources :assessments
     resources :jobs
     resources :businesses, only: [:update] do

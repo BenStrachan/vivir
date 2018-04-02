@@ -14,10 +14,14 @@
     <div class="wrapper">
       <%= render 'layouts/admin/header' %>
       <%= render 'layouts/admin/sidebar' %>
-      <div class="content-wrapper">
-        <section class="content">
-          <%= yield %>
-        </section>
+      <div class="content-wrapper <%= @subsidebar ? 'has-subsidebar' : '' %>">
+        <% if @subsidebar %>
+          <%= yield%>
+        <% else %>
+          <section class="content">
+            <%= yield %>
+          </section>
+        <% end %>
       </div>
     </div>
     <%= yield(:page_js) %>

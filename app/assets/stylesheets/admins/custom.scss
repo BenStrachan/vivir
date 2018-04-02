@@ -170,3 +170,46 @@
     }
   }
 }
+
+.has-subsidebar {
+  display: flex;
+  flex-direction: row;
+  .sub-sidebar {
+    width: 30%;
+    background: #FFF;
+    border-right: 1px solid #d2d6de;
+    border-top: 1px solid #d2d6de;
+    ul {
+      list-style: none;
+      padding: 0px;
+      li {
+        border-bottom: 1px solid #d2d2d2;
+        a {
+          padding: 10px 15px;
+          color: #444;
+          display: block;
+          font-weight: 600;
+          &.active, &:hover {
+            background: #F48222;
+            color: #FFF;
+          }
+        }
+      }
+    }
+  }
+  .primary {
+    flex: 1 1 auto;
+    padding: 15px;
+  }
+  @media screen and (min-width: 1170px) {
+    .sub-sidebar {
+      width: 20%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    .sub-sidebar {
+      width: 100%;
+    }
+  }
+}
