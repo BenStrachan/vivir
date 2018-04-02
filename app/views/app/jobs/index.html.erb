@@ -1,6 +1,6 @@
 <div class="box box-default">
   <div class="box-body">
-    <%= search_form_for [:admin, @search] do |f| %>
+    <%= search_form_for [:app, @search] do |f| %>
     <div class="row">
       <div class="col-md-2">
         <div class="form-group">
@@ -101,7 +101,7 @@
         <td><%= job.client&.full_name %></td>
         <td><%= job.job_type&.name %></td>
         <td><%= job.status %></td>
-        <td><a href="#">Allocate</a></td>
+        <td><a href="#">Allocate to me</a></td>
         <td>
           <a href="<%= edit_app_job_path(job) %>" data-method="GET" data-remote="true">
             Completed
