@@ -2,43 +2,49 @@
   <div class="box-body">
     <%= search_form_for [:admin, @search] do |f| %>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Location</label>
           <%= f.select :client_location_id_eq,
             options_for_select(current_business.locations.pluck(:name, :id), @search.client_location_id_cont), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Client</label>
-          <%= f.select :client_id_eq, 
+          <%= f.select :client_id_eq,
             options_for_select(current_business.clients.pluck(:full_name, :id), @search.client_id_cont), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Assessment type</label>
-          <%= f.select :job_type_id_eq, 
+          <%= f.select :job_type_id_eq,
             options_for_select(current_business.assessment_types.pluck(:name, :id), @search.job_type_id_eq), {include_blank: 'All'}, class: 'form-control' %>
 
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Status</label>
           <%= f.select :status_eq, options_for_select(Job::STATUS, @search.status_eq), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Completed start</label>
           <%= f.search_field :completed_date_gteq, value: @search.completed_date_gteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Completed end</label>
+          <%= f.search_field :completed_date_lteq, value: @search.completed_date_lteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Week commencing</label>
           <%= f.search_field :completed_date_lteq, value: @search.completed_date_lteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
