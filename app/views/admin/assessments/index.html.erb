@@ -2,35 +2,41 @@
   <div class="box-body">
     <%= search_form_for [:admin, @search] do |f| %>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-2">
         <div class="form-group">
           <label>Location</label>
           <%= f.select :client_location_id_eq,
             options_for_select(location_options_for_select(current_business.locations), @search.client_location_id_cont), {include_blank: 'All'} , class: 'form-control' %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <div class="form-group">
           <label>Client</label>
           <%= f.select :client_id_eq,
             options_for_select(client_options_for_app, @search.client_id_cont), {include_blank: 'All'} , class: 'form-control' %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <div class="form-group">
           <label>Assessment type</label>
           <%= f.select :assessment_type_id_eq,
             options_for_select(current_business.assessment_types.pluck(:name, :id), @search.assessment_type_id_cont), {include_blank: 'All'} , class: 'form-control' %>
-
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Created by</label>
+          <%= f.select :client_id_eq,
+            options_for_select(client_options_for_app, @search.client_id_cont), {include_blank: 'All'} , class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-2">
         <div class="form-group">
           <label>Expired start</label>
           <%= f.search_field :assessment_expired_gteq, value: @search.assessment_expired_gteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <div class="form-group">
           <label>Expired end</label>
           <%= f.search_field :assessment_expired_lteq, value: @search.assessment_expired_lteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>

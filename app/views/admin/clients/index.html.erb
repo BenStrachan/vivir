@@ -2,20 +2,20 @@
   <div class="box-body">
     <%= search_form_for [:admin, @search] do |f| %>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="form-group">
             <label>Location</label>
             <%= f.select :location_id_eq,
               options_for_select(current_business.locations.pluck(:name, :id), @search.location_id_eq), {include_blank: 'All'} , class: 'form-control' %>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="form-group">
             <label>Client name</label>
             <%= f.search_field :full_name_cont, class: 'form-control'%>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="form-group">
             <label>Management</label>
             <%= f.select :job_type_id_eq,
