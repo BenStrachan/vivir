@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :customer %>
+    <%= f.association :customer, label_method: :business_name %>
     <%= f.input :name %>
     <%= f.input :phone %>
     <%= f.input :fax %>

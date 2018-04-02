@@ -6,7 +6,7 @@
         <div class="form-group">
           <label>Location</label>
           <%= f.select :client_location_id_eq,
-            options_for_select(current_business.locations.pluck(:name, :id), @search.client_location_id_cont), {include_blank: 'All'}, class: 'form-control' %>
+            options_for_select(location_options_for_select(current_business.locations), @search.client_location_id_cont), {include_blank: 'All'}, class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-3">

@@ -9,4 +9,14 @@ module ApplicationHelper
 
     options
   end
+
+  def location_options_for_select(locations)
+    options = []
+
+    locations.each do |location|
+      options << ["#{location.customer&.business_name} | #{location.name}", location.id]
+    end
+
+    options
+  end
 end

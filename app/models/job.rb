@@ -33,4 +33,5 @@ class Job < ApplicationRecord
   belongs_to :job_type
   belongs_to :user, optional: true
   belongs_to :business
+  belongs_to :completed_by, class_name: User::name
 end

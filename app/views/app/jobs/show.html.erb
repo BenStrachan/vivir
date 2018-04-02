@@ -36,8 +36,13 @@
       </p>
 
       <p>
+        <strong>Completed by:</strong>
+        <%= @job.completed_by&.full_name %>
+      </p>
+
+      <p>
         <strong>Completed date:</strong>
-        <%= @job.completed_date %>
+        <%= @job.completed_date.try(:strftime, '%B %d %Y') %>
       </p>
 
       <p>

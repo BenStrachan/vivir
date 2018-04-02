@@ -64,7 +64,8 @@ module Admin
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:job_id, :client_id, :job_type_id, :status, :visit_number, :weekly_visit_total, :user_id, :completed_date, :notes, :business_id)
+      params.require(:job).permit(:job_id, :client_id, :job_type_id, :status, :visit_number, :weekly_visit_total, :user_id, :completed_date, :notes, :business_id,
+        :completed_by_id)
     end
   end
 end

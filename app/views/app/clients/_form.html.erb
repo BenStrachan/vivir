@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :date_of_birth %>
+    <%= f.input :date_of_birth, as: :string, input_html: { class: 'datepicker' } %>
     <%= f.association :location %>
     <%= f.input :room %>
     <%= f.association :job_type %>

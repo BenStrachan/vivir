@@ -37,6 +37,29 @@
   }
 }
 
+.dtp {
+  .btn.btn-flat {
+    background: transparent;
+    font-weight: 600;
+    margin: 0px 10px;
+  }
+  div.dtp-actual-year {
+    color: #FFF;
+  }
+  .p10 > a {
+    color: #FFF;
+  }
+  div.dtp-date, .dtp div.dtp-time {
+    background: #BDBDBD;
+  }
+  > .dtp-content > .dtp-date-view > header.dtp-header {
+    background: #9E9E9E;
+  }
+  table.dtp-picker-days tr > td > a.selected {
+    background: #757575;
+  }
+}
+
 .select2-container {
   width: 100%;
   max-width: 100%;

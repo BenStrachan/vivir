@@ -6,7 +6,7 @@
         <div class="form-group">
           <label>Location</label>
           <%= f.select :client_location_id_eq,
-            options_for_select(current_business.locations.pluck(:name, :id), @search.client_location_id_cont), {include_blank: 'All'} , class: 'form-control' %>
+            options_for_select(location_options_for_select(current_business.locations), @search.client_location_id_cont), {include_blank: 'All'} , class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-4">
@@ -74,7 +74,7 @@
         <td><%= assessment.client&.location&.customer&.business_name %> | <%= assessment.client&.location&.name %></td>
         <td><%= assessment.client&.full_name %></td>
         <td><%= assessment.assessment_type&.name %></td>
-        <td><%= assessment.assessment_expired %></td>
+        <td><%= assessment.assessment_expired.try(:strftime, '%B %d %Y') %></td>
         <td><%= link_to 'Show', admin_assessment_path(assessment) %></td>
         <td><%= link_to 'Edit', edit_admin_assessment_path(assessment) %></td>
         <td><%= link_to 'Delete', admin_assessment_path(assessment), method: :delete, data: { confirm: 'Are you sure?' } %></td>

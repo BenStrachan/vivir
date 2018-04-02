@@ -22,12 +22,12 @@
 
       <p>
         <strong>Assessment completed:</strong>
-        <%= @assessment.assessment_completed %>
+        <%= @assessment.assessment_completed.try(:strftime, '%B %d %Y') %>
       </p>
 
       <p>
         <strong>Assessment expired:</strong>
-        <%= @assessment.assessment_expired %>
+        <%= @assessment.assessment_expired.try(:strftime, '%B %d %Y') %>
       </p>
 
       <p>

@@ -2,11 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :client %>
-    <%= f.association :user %>
+    <%= f.association :client, label_method: :full_name %>
+    <%= f.association :user, label_method: :full_name %>
     <%= f.association :assessment_type %>
-    <%= f.input :assessment_completed %>
-    <%= f.input :assessment_expired %>
+    <%= f.input :assessment_completed, as: :string, input_html: { class: 'datepicker' } %>
+    <%= f.input :assessment_expired, as: :string, input_html: { class: 'datepicker' } %>
     <%= f.input :status, collection: ['Current', 'Expired'] %>
     <%= f.input :attachment %>
     <%= f.input :notes, :as => :text, :input_html => {:rows => 5} %>

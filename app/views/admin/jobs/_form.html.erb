@@ -2,13 +2,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :client %>
+    <%= f.association :client, label_method: :full_name %>
     <%= f.association :job_type %>
     <%= f.input :status, collection: ['Pending', 'Treated', 'Out of facility', 'Hospitalised', 'Refused when offered treatment', 'Sick', 'Facility in outbreak', 'Allied health professional sick', 'Not completed'] %>
     <%= f.input :visit_number %>
     <%= f.input :weekly_visit_total %>
-    <%= f.association :user %>
-    <%= f.input :completed_date, input_html: { class: 'datepicker' }    %>
+    <%= f.association :user, label_method: :full_name %>
+    <%= f.input :completed_date, as: :string, input_html: { class: 'datepicker' } %>
     <%= f.input :notes, :as => :text, :input_html => {:rows => 5} %>
   </div>
 
