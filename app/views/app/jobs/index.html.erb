@@ -59,7 +59,7 @@
       <div class="col-md-2">
         <div class="form-group">
           <label>Week commencing</label>
-          <%= f.search_field :completed_date_lteq, value: @search.completed_date_lteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
+          <%= f.search_field :created_at_gteq, value: @search.created_at_gteq.try(:strftime, "%B %d %Y"), class: 'datepicker form-control' %>
         </div>
       </div>
       <div class="col-md-12">

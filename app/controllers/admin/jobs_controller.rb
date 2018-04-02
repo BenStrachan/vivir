@@ -8,7 +8,11 @@ module Admin
   # GET /jobs
   # GET /jobs.json
   def index
-    @search = current_business.jobs.includes(:job_type, :user, client: :location)
+    if params[:q] && params[:q][:created_at_gteq].present?
+      params[:q][:created_at_lteq] = params[:q][:created_at_gteq].to_date + 7.days
+    end
+
+    @search = current_business.jobs.includes(:job_type, :user).preload(client: :location)
                               .joins(client: :location)
                               .ransack(params[:q])
 
